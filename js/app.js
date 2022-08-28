@@ -31,12 +31,15 @@ const search = ()=>{
   const searchInput= document.getElementById('search-input');
   const searchValue= searchInput.value;
   if (searchValue === '') {
+    meals.innerHTML=''
     notFound()
   }else{
+    document.getElementById('condition').innerText = `Your Search Results:`
+    document.getElementById('condition').style.color='gray'
     loadMeals(searchValue)
   }
 
-  
+  searchInput.value = ''
 }
 
 
