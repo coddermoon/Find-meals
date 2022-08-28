@@ -1,3 +1,14 @@
+const meals = document.getElementById('meal')
+
+
+// functions
+
+const notFound = ()=>{
+  document.getElementById('condition').innerText = `404 Not found`
+  document.getElementById('condition').style.color='red'
+
+}
+
 
 
 const getRecipies = (singleMeal)=>{
@@ -10,6 +21,7 @@ const getRecipies = (singleMeal)=>{
 
 
 
+
 const loadMeals = (search)=>{
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
     .then(res => res.json())
@@ -17,17 +29,21 @@ const loadMeals = (search)=>{
 }
 const search = ()=>{
   const searchInput= document.getElementById('search-input');
-  const searchValue= searchInput.value
+  const searchValue= searchInput.value;
+  if (searchValue === '') {
+    notFound()
+  }else{
+    loadMeals(searchValue)
+  }
 
-  loadMeals(searchValue)
+  
 }
 
 
 const displayMeals = (foods)=>{
 
-   
 
-const meals = document.getElementById('meal')
+
 meals.innerHTML=''
 
     foods?.forEach(food => {
@@ -41,10 +57,11 @@ meals.innerHTML=''
        </div>
        <div class = "meal-name">
          <h3>${name}</h3>
-         <a href = "#" class = "recipe-btn"onclick="getRecipies(${idMeal})">Get Recipe</a>
+         <a  class = "recipe-btn"onclick="getRecipies(${idMeal})">Get Recipe</a>
        </div>
      </div>
        `
+      
        meals.appendChild(div)
     });
 
