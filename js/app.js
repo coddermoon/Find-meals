@@ -1,8 +1,17 @@
 
-const loadMeals = ()=>{
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${'fish'}`)
+
+
+
+const loadMeals = (search)=>{
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
     .then(res => res.json())
     .then(data=>displayMeals(data.meals))
+}
+const search = ()=>{
+  const searchInput= document.getElementById('search-input');
+  const searchValue= searchInput.value
+
+  loadMeals(searchValue)
 }
 
 
@@ -11,6 +20,7 @@ const displayMeals = (foods)=>{
    
 
 const meals = document.getElementById('meal')
+meals.innerHTML=''
 
     foods.forEach(food => {
         console.log(food)
