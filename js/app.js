@@ -1,5 +1,11 @@
 
 
+const getRecipies = ()=>{
+  console.log('clicked')
+}
+
+
+
 
 
 const loadMeals = (search)=>{
@@ -33,7 +39,7 @@ meals.innerHTML=''
        </div>
        <div class = "meal-name">
          <h3>${name}</h3>
-         <a href = "#" class = "recipe-btn">Get Recipe</a>
+         <a href = "#" class = "recipe-btn"onclick="getRecipies()">Get Recipe</a>
        </div>
      </div>
        `
